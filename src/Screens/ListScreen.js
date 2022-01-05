@@ -30,7 +30,7 @@ const ListScreen = ({ onLogout }) => {
           styles.container_logout,
         ]}
       >
-        <Text>
+        <Text style={styles.text}>
           Déconnexion
         </Text>
       </TouchableOpacity>
@@ -49,7 +49,7 @@ const ListScreen = ({ onLogout }) => {
                       styles.container_margin,
                     ]}
                   >
-                    <Text>
+                    <Text style={styles.text}>
                       {user.name}
                     </Text>
                   </View>
@@ -73,6 +73,9 @@ const styles = StyleSheet.create({
   },
   container_logout: {
     borderLeftColor: '#fe3a5e',
+  },
+  text: {
+    color: '#fff',
   }
 })
 
