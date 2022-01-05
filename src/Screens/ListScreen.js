@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {
-  ActivityIndicator,
+  FlatList,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -34,29 +34,26 @@ const ListScreen = ({ onLogout }) => {
           Déconnexion
         </Text>
       </TouchableOpacity>
-      {
-        true === isLoading
-          ? <ActivityIndicator
-              color="#fff"
-            />
-          : <>
-              {listUsers.map((user, i) => {
-                return (
-                  <View
-                    key={user.id}
-                    style={[
-                      styles.container,
-                      styles.container_margin,
-                    ]}
-                  >
-                    <Text style={styles.text}>
-                      {user.name}
-                    </Text>
-                  </View>
-                )
-              })}
-            </>
-      }
+      <FlatList
+        data={listUsers}
+        refreshing={isLoading}
+        renderItem={({ item: user }) => {
+          return (
+            <View
+              key={user.id}
+              style={[
+                styles.container,
+                styles.container_margin,
+              ]}
+            >
+              <Text style={styles.text}>
+                {user.name}
+              </Text>
+            </View>
+          )
+        }}
+        keyExtractor={(item) => item.id.toString()}
+      />
     </View>
   )
 }
